@@ -25,12 +25,14 @@ public class TrackYourMovement extends AppCompatActivity {
     private Switch gps;
     private TextView lat;
     private TextView lon;
+    private TextView speed;
     private ListView coordinates;
 
     private LocationManager locationManager;
     private LocationListener locationListener;
 
-    DecimalFormat sf = new DecimalFormat("0.00000");
+    DecimalFormat coorfor = new DecimalFormat("0.00000");
+    DecimalFormat speedfor = new DecimalFormat("0");
 
     ArrayList<String> list = new ArrayList<String>(); /** Items entered by the user is stored in this ArrayList variable */
     ArrayAdapter<String> adapter; /** Declaring an ArrayAdapter to set items to ListView */
@@ -40,13 +42,14 @@ public class TrackYourMovement extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_track_your_movement);
 
-        gps = (Switch) findViewById(R.id.gps_switch);
-        lat = (TextView) findViewById(R.id.lat);
-        lon = (TextView) findViewById(R.id.lon);
+        gps   = (Switch) findViewById(R.id.gps_switch);
+        lat   = (TextView) findViewById(R.id.lat);
+        lon   = (TextView) findViewById(R.id.lon);
+        speed = (TextView) findViewById(R.id.speed);
 
         coordinates = (ListView) findViewById(R.id.coorlist);
 
-        list.add("Latitude:\t\t\tLongitude:");
+        list.add("Latitude:\t\tLongitude:\t\tGeschwindigkeit:");
         /** Defining the ArrayAdapter to set items to ListView */
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, list);
         coordinates.setAdapter(adapter);
@@ -55,12 +58,18 @@ public class TrackYourMovement extends AppCompatActivity {
         locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
-                if(lat.getText()!="" && lon.getText()!=""){
-                    list.add(sf.format(location.getLatitude())+"\t\t\t"+sf.format(location.getLongitude()));
+                if(lat.getText()!="" && lon.getText()!="") {
+                    if (location.hasSpeed()){
+                        list.add(coorfor.format(location.getLatitude()) + "\t\t\t" + coorfor.format(location.getLongitude()) + "\t\t\t\t\t" + speedfor.format(location.getSpeed()));
+                    }else{
+                        list.add(coorfor.format(location.getLatitude()) + "\t\t\t" + coorfor.format(location.getLongitude()));
+                    }
                     adapter.notifyDataSetChanged();
                 }
-                lat.setText(sf.format(location.getLatitude()));
-                lon.setText(sf.format(location.getLongitude()));
+                lat.setText(coorfor.format(location.getLatitude()));
+                lon.setText(coorfor.format(location.getLongitude()));
+                speed.setText(coorfor.format(location.getSpeed()));
+
             }
 
             @Override

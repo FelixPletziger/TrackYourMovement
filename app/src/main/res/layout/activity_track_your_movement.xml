@@ -9,83 +9,91 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.bo.hs.trackyourmovement.TrackYourMovement">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="GPS On / Off"
+        android:id="@+id/gps_switch"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:checked="false" />
 
-        <Switch
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="GPS On / Off"
-            android:id="@+id/gps_switch"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:checked="false" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Lat:"
+        android:id="@+id/lat_text"
+        android:layout_below="@+id/title"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Lat:"
-            android:id="@+id/lat_text"
-            android:layout_below="@+id/title"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Current Position:"
+        android:id="@+id/title"
+        android:layout_below="@+id/gps_switch"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="35dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Current Position:"
-            android:id="@+id/title"
-            android:layout_below="@+id/gps_switch"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="35dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Lon:"
+        android:id="@+id/lon_text"
+        android:layout_below="@+id/lat_text"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Lon:"
-            android:id="@+id/lon_text"
-            android:layout_below="@+id/lat_text"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/coorlist"
+        android:layout_marginTop="36dp"
+        android:layout_below="@+id/lon_text"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:choiceMode="none" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/lat"
-            android:layout_above="@+id/lon_text"
-            android:layout_toRightOf="@+id/lon_text"
-            android:layout_toEndOf="@+id/lon_text"
-            android:layout_marginLeft="14dp"
-            android:layout_marginStart="14dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Speed:"
+        android:id="@+id/speed_text"
+        android:layout_below="@+id/lon_text"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/lon"
-            android:layout_alignTop="@+id/lon_text"
-            android:layout_alignLeft="@+id/lat"
-            android:layout_alignStart="@+id/lat" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/lat"
+        android:layout_below="@+id/title"
+        android:layout_alignRight="@+id/gps_switch"
+        android:layout_alignEnd="@+id/gps_switch" />
 
-        <ListView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/coorlist"
-            android:layout_marginTop="36dp"
-            android:layout_below="@+id/lon_text"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:choiceMode="none" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/lon"
+        android:layout_below="@+id/lat"
+        android:layout_alignLeft="@+id/lat"
+        android:layout_alignStart="@+id/lat" />
 
-    </RelativeLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/speed"
+        android:layout_alignBottom="@+id/speed_text"
+        android:layout_alignLeft="@+id/lat"
+        android:layout_alignStart="@+id/lat" />
 </RelativeLayout>
